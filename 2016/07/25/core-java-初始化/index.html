@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="core java," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="有趣的程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TraineeY">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="java尽力保证：所有变量在使用之前都能得到恰当的初始化。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="core-java-初始化">
+<meta property="og:url" content="http://yoursite.com/2016/07/25/core-java-初始化/index.html">
 <meta property="og:site_name" content="TraineeY">
-<meta property="og:description" content="有趣的程序员">
+<meta property="og:description" content="java尽力保证：所有变量在使用之前都能得到恰当的初始化。">
+<meta property="og:updated_time" content="2016-07-24T18:44:26.633Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TraineeY">
-<meta name="twitter:description" content="有趣的程序员">
+<meta name="twitter:title" content="core-java-初始化">
+<meta name="twitter:description" content="java尽力保证：所有变量在使用之前都能得到恰当的初始化。">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/07/25/core-java-初始化/"/>
 
-  <title> TraineeY </title>
+  <title> core-java-初始化 | TraineeY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,9 +237,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -260,10 +259,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/07/25/core-java-初始化/" itemprop="url">
-                  core-java-初始化
-                </a>
+                core-java-初始化
               
             
           </h1>
@@ -338,304 +334,124 @@
       
 
       
-        
-          <p>java尽力保证：所有变量在使用之前都能得到恰当的初始化。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/25/core-java-初始化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+        <p>java尽力保证：所有变量在使用之前都能得到恰当的初始化。<br><a id="more"></a></p>
+<h2 id="初始化的变量"><a href="#初始化的变量" class="headerlink" title="初始化的变量"></a>初始化的变量</h2><p>需要初始化的变量分为局部变量和成员变量（即数据成员、字段）。<br><strong>局部变量：</strong>在定义后，使用前需要程序员赋初始值，不然使用该变量时会报错。<br><strong>成员变量：</strong>在定义时编译器根据不同的数据类型会给不同的默认值（基本数据类型中，boolean为false，其它为0，其中char为0时显示空白‘【】’，对象引用初始值为null）。</p>
+<blockquote>
+<p>编译器不会给局部变量赋默认值，因为局部变量未初始化通常是程序员喝了假酒，采用默认值反而会掩盖这种失误，所以强制程序员自己赋值，这样往往可以减少bug。</p>
+</blockquote>
+<h2 id="初始化的方式"><a href="#初始化的方式" class="headerlink" title="初始化的方式"></a>初始化的方式</h2><h3 id="指定初始化"><a href="#指定初始化" class="headerlink" title="指定初始化"></a>指定初始化</h3><p>即在定义的时候给变量赋值</p>
+<pre><code>int i=1;
+char c=&apos;c&apos;;
+String str=&quot;HELLO KITTY!&quot;
+</code></pre><h3 id="构造器初始化"><a href="#构造器初始化" class="headerlink" title="构造器初始化"></a>构造器初始化</h3><p>构造器可以简单看成一个以类名为名称的没有返回值的方法。</p>
+<pre><code>public class Test {
+    int i;
+    Test(){
+        i=1;
+    }
+}
+</code></pre><h3 id="代码块初始化"><a href="#代码块初始化" class="headerlink" title="代码块初始化"></a>代码块初始化</h3><p>这里分为显示的静态初始化和非静态实例初始化。<br><strong>显示静态初始化：</strong>许多静态初始化动作的集合（静态块）</p>
+<pre><code>static int i;
+static double j;
+static{
+    i=1;
+    j=1.0;
+}
+</code></pre><p><strong>非静态实例初始化：</strong>与初始化一系列静态对象类似的语句块</p>
+<pre><code>int i;
+double j;
+{
+    i=1;
+    j=1.0;
+}
+</code></pre><p>两者的区别看起来区别只在于初始化的对象是否为静态的，需要说明的是非静态实例初始化对于支持匿名内部类的初始化是必须的。</p>
+<blockquote>
+<p>静态初始化只在类对象首次加载（首次创建类对象或者类的静态方法/静态域首次被访问）时初始化一次。<br>实例初始化在每次构造器被调用前都会执行。</p>
+</blockquote>
+<h2 id="初始化的顺序"><a href="#初始化的顺序" class="headerlink" title="初始化的顺序"></a>初始化的顺序</h2><p>局部变量在程序员给它赋值的时候初始化。<br>成员变量在声明时，编译器先给它一个默认初始值，再执行字段定义处的动作（包括代码块的初始化），最后执行构造器。如：</p>
+<pre><code>public class Test {
+    int i;
+    {
+        i=1;
+    }
+    Test(){
+        i=2;
+    }
+}
+</code></pre><p>因为i为int类型，i先得到默认初始值0，再赋值为1，再由构造器赋值为2.</p>
+
       
     </div>
 
     <div>
       
+        
+
+      
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/19/core-java内部类/" itemprop="url">
-                  core-java内部类
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-19T02:59:26+08:00" content="2016-07-19">
-              2016-07-19
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/core-java/" itemprop="url" rel="index">
-                    <span itemprop="name">core java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/19/core-java内部类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/19/core-java内部类/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/19/core-java内部类/" class="leancloud_visitors" data-flag-title="core-java内部类">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
+            <a href="/tags/core-java/" rel="tag">#core java</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>人家都叫内部类那就是说她是定义在另一个类中的类咯。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/19/core-java内部类/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/19/core-java内部类/" rel="next" title="core-java内部类">
+                <i class="fa fa-chevron-left"></i> core-java内部类
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/10/github-pages+hexo的个人博客搭建/" itemprop="url">
-                  github pages+hexo的个人博客搭建
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-10T17:04:44+08:00" content="2016-07-10">
-              2016-07-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Blog/" itemprop="url" rel="index">
-                    <span itemprop="name">Blog</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/10/github-pages+hexo的个人博客搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/10/github-pages+hexo的个人博客搭建/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/10/github-pages+hexo的个人博客搭建/" class="leancloud_visitors" data-flag-title="github pages+hexo的个人博客搭建">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p><strong>摘要：</strong><br>从清清白白一个人到完完整整一个个人博客的搭建过程，主要说一下会碰到的问题。自己梳理的同时，也给后面有兴趣自己搭建博客的庞游一个参考。文末会给出一些深入学习的资料链接。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/10/github-pages+hexo的个人博客搭建/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/25/core-java-初始化/"
+     data-title="core-java-初始化"
+     data-content=""
+     data-url="http://yoursite.com/2016/07/25/core-java-初始化/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -643,6 +459,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/25/core-java-初始化/"
+           data-title="core-java-初始化" data-url="http://yoursite.com/2016/07/25/core-java-初始化/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -662,8 +486,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -724,6 +557,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化的变量"><span class="nav-number">1.</span> <span class="nav-text">初始化的变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化的方式"><span class="nav-number">2.</span> <span class="nav-text">初始化的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指定初始化"><span class="nav-number">2.1.</span> <span class="nav-text">指定初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造器初始化"><span class="nav-number">2.2.</span> <span class="nav-text">构造器初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码块初始化"><span class="nav-number">2.3.</span> <span class="nav-text">代码块初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化的顺序"><span class="nav-number">3.</span> <span class="nav-text">初始化的顺序</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -814,6 +658,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

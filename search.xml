@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title><![CDATA[core-java-初始化]]></title>
+      <url>http://yoursite.com/2016/07/25/core-java-%E5%88%9D%E5%A7%8B%E5%8C%96/</url>
+      <content type="html"><![CDATA[<p>java尽力保证：所有变量在使用之前都能得到恰当的初始化。<br><a id="more"></a></p>
+<h2 id="初始化的变量"><a href="#初始化的变量" class="headerlink" title="初始化的变量"></a>初始化的变量</h2><p>需要初始化的变量分为局部变量和成员变量（即数据成员、字段）。<br><strong>局部变量：</strong>在定义后，使用前需要程序员赋初始值，不然使用该变量时会报错。<br><strong>成员变量：</strong>在定义时编译器根据不同的数据类型会给不同的默认值（基本数据类型中，boolean为false，其它为0，其中char为0时显示空白‘【】’，对象引用初始值为null）。</p>
+<blockquote>
+<p>编译器不会给局部变量赋默认值，因为局部变量未初始化通常是程序员喝了假酒，采用默认值反而会掩盖这种失误，所以强制程序员自己赋值，这样往往可以减少bug。</p>
+</blockquote>
+<h2 id="初始化的方式"><a href="#初始化的方式" class="headerlink" title="初始化的方式"></a>初始化的方式</h2><h3 id="指定初始化"><a href="#指定初始化" class="headerlink" title="指定初始化"></a>指定初始化</h3><p>即在定义的时候给变量赋值</p>
+<pre><code>int i=1;
+char c=&apos;c&apos;;
+String str=&quot;HELLO KITTY!&quot;
+</code></pre><h3 id="构造器初始化"><a href="#构造器初始化" class="headerlink" title="构造器初始化"></a>构造器初始化</h3><p>构造器可以简单看成一个以类名为名称的没有返回值的方法。</p>
+<pre><code>public class Test {
+    int i;
+    Test(){
+        i=1;
+    }
+}
+</code></pre><h3 id="代码块初始化"><a href="#代码块初始化" class="headerlink" title="代码块初始化"></a>代码块初始化</h3><p>这里分为显示的静态初始化和非静态实例初始化。<br><strong>显示静态初始化：</strong>许多静态初始化动作的集合（静态块）</p>
+<pre><code>static int i;
+static double j;
+static{
+    i=1;
+    j=1.0;
+}
+</code></pre><p><strong>非静态实例初始化：</strong>与初始化一系列静态对象类似的语句块</p>
+<pre><code>int i;
+double j;
+{
+    i=1;
+    j=1.0;
+}
+</code></pre><p>两者的区别看起来区别只在于初始化的对象是否为静态的，需要说明的是非静态实例初始化对于支持匿名内部类的初始化是必须的。</p>
+<blockquote>
+<p>静态初始化只在类对象首次加载（首次创建类对象或者类的静态方法/静态域首次被访问）时初始化一次。<br>实例初始化在每次构造器被调用前都会执行。</p>
+</blockquote>
+<h2 id="初始化的顺序"><a href="#初始化的顺序" class="headerlink" title="初始化的顺序"></a>初始化的顺序</h2><p>局部变量在程序员给它赋值的时候初始化。<br>成员变量在声明时，编译器先给它一个默认初始值，再执行字段定义处的动作（包括代码块的初始化），最后执行构造器。如：</p>
+<pre><code>public class Test {
+    int i;
+    {
+        i=1;
+    }
+    Test(){
+        i=2;
+    }
+}
+</code></pre><p>因为i为int类型，i先得到默认初始值0，再赋值为1，再由构造器赋值为2.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[core-java内部类]]></title>
       <url>http://yoursite.com/2016/07/19/core-java%E5%86%85%E9%83%A8%E7%B1%BB/</url>
       <content type="html"><![CDATA[<p>人家都叫内部类那就是说她是定义在另一个类中的类咯。<br><a id="more"></a></p>
@@ -13,10 +64,10 @@
 <ol>
 <li>内部类方法可以访问该类定义所在的作用域中的数据，包括私有的数据</li>
 <li>内部类可以对同一个包的其他类隐藏起来</li>
-<li>想定义一个回调函数又不想编写大量代码，使用匿名内部类比较便捷<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2></li>
+<li>想定义一个回调函数又不想编写大量代码，使用匿名内部类比较便捷</li>
 </ol>
 </blockquote>
-<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><h2 id="方法内部类"><a href="#方法内部类" class="headerlink" title="方法内部类"></a>方法内部类</h2><h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2>]]></content>
+<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><h2 id="方法内部类"><a href="#方法内部类" class="headerlink" title="方法内部类"></a>方法内部类</h2><h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2>]]></content>
     </entry>
     
     <entry>

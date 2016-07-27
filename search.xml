@@ -40,17 +40,21 @@ double j;
 <blockquote>
 <p>静态初始化只在类对象首次加载（首次创建类对象或者类的静态方法/静态域首次被访问）时初始化一次。<br>实例初始化在每次构造器被调用前都会执行。</p>
 </blockquote>
-<h2 id="初始化的顺序"><a href="#初始化的顺序" class="headerlink" title="初始化的顺序"></a>初始化的顺序</h2><p>局部变量在程序员给它赋值的时候初始化。<br>成员变量在声明时，编译器先给它一个默认初始值，再执行字段定义处的动作（包括代码块的初始化），最后执行构造器。如：</p>
-<pre><code>public class Test {
-    int i;
-    {
+<h2 id="初始化的顺序"><a href="#初始化的顺序" class="headerlink" title="初始化的顺序"></a>初始化的顺序</h2><p>局部变量在程序员给它赋值的时候初始化。<br>成员变量在声明时，编译器先给它一个默认初始值，如果有继承关系,先执行基类构造器，再执行字段定义处的动作（包括代码块的初始化），最后执行子类构造器。如：</p>
+<pre><code>public class FatherOfTest {
+int i;        
+FasterOfTest(){
         i=1;
     }
-    Test(){
+public class Test {
+    {
         i=2;
     }
+    Test(){
+        i=3;
+    }
 }
-</code></pre><p>因为i为int类型，i先得到默认初始值0，再赋值为1，再由构造器赋值为2.</p>
+</code></pre><p>因为i为int类型，i先得到默认初始值0，再执行基类的构造器初始化为1，再执行代码块赋值为2，再由子类构造器赋值为3.</p>
 ]]></content>
     </entry>
     

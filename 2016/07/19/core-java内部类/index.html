@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/19/core-java内部类/index.html">
 <meta property="og:site_name" content="TraineeY">
 <meta property="og:description" content="人家都叫内部类那就是说她是定义在另一个类中的类咯。">
-<meta property="og:updated_time" content="2016-07-18T19:19:56.895Z">
+<meta property="og:updated_time" content="2016-08-06T07:37:45.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="core-java内部类">
 <meta name="twitter:description" content="人家都叫内部类那就是说她是定义在另一个类中的类咯。">
@@ -344,7 +344,52 @@
 <li>想定义一个回调函数又不想编写大量代码，使用匿名内部类比较便捷</li>
 </ol>
 </blockquote>
-<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><h2 id="方法内部类"><a href="#方法内部类" class="headerlink" title="方法内部类"></a>方法内部类</h2><h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2>
+<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><pre><code>class Outer {
+    class Inner{
+
+    }
+}
+</code></pre><p>在外部类Outer中声明了一个内部类Inner，编译以后会产生两个.class文件：Outer.class和Outer$Inner.class。</p>
+<h2 id="方法内部类"><a href="#方法内部类" class="headerlink" title="方法内部类"></a>方法内部类</h2><pre><code>class Outer {
+    public void f(){
+        class Inner{
+
+        }
+    }    
+}
+</code></pre><p>在代码块如一个方法中创建的内部类即方法内部类（局部内部类）。</p>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><pre><code>class OtherClass{
+    private int n;
+    public OuherClass(int x){
+        n=x;
+    }
+}
+class Outer {
+    public OtherClass f(int x){
+        return new OtherClass(x){
+            private int i=1;
+            private int j;
+            {j=2;}//实例初始化
+        };
+    }    
+}
+</code></pre><p>在外部类Outer中有一个方法f()，return语句表达的是<strong>返回一个继承自OtherClass的匿名类对象</strong>，new表达式将返回的引用向上转型为对OtherClass的引用。<br>内部类的初始化可以通过传参数给基类OtherClass的构造器完成，或者在定义字段中完成。<br>匿名内部类没有名字所以没有构造器，可以通过实例初始化达到类似构造器的目的。</p>
+<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><pre><code>class Outer {
+    static class Inner{
+
+    }
+}
+</code></pre><p>普通内部类隐式地保存一个指向创建它的外部类的对象，而静态内部类（又叫嵌套类）没有，所以不需要内部类对象和外部类对象有什么联系可以将内部类声明为static。</p>
+<ol>
+<li>创建静态内部类对象不需要外围类对象。</li>
+<li>不能从静态内部类对像中访问非静态的外部类对象。</li>
+</ol>
+<h3 id="接口内部的类"><a href="#接口内部的类" class="headerlink" title="接口内部的类"></a>接口内部的类</h3><p>由于接口中的任何类自动为public和static，所以接口中可以有静态内部类，可用于创建某些公共代码给这个接口的不同实现共用。</p>
+<blockquote>
+<p>嵌套类可以用来放置测试代码，这样发布产品是可以简单的删除Outer$Inner.class而不必带着编译过的额外代码。</p>
+</blockquote>
+<p>更多内容请看下集。</p>
+
       
     </div>
 
@@ -533,7 +578,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员内部类"><span class="nav-number">2.</span> <span class="nav-text">成员内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态内部类"><span class="nav-number">3.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法内部类"><span class="nav-number">4.</span> <span class="nav-text">方法内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">5.</span> <span class="nav-text">匿名内部类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员内部类"><span class="nav-number">2.</span> <span class="nav-text">成员内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法内部类"><span class="nav-number">3.</span> <span class="nav-text">方法内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">4.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态内部类"><span class="nav-number">5.</span> <span class="nav-text">静态内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口内部的类"><span class="nav-number">5.1.</span> <span class="nav-text">接口内部的类</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

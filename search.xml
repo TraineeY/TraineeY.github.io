@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[实习日记-Round1]]></title>
+      <url>http://yoursite.com/2016/08/08/%E5%AE%9E%E4%B9%A0%E6%97%A5%E8%AE%B0-Round1/</url>
+      <content type="html"><![CDATA[<p>Trainee Diary–Round  1：Hey，fish！<br>入职第一天，一秒变小鱼人，再也不是在预言家查杀下笑着活下去精钢狼了。<br>开一个专栏，看看一年后回过头我是有长进还是有长进吧。<br><a id="more"></a></p>
+<h2 id="入职前一小时"><a href="#入职前一小时" class="headerlink" title="入职前一小时"></a>入职前一小时</h2><p>学化学的学长每天摸10小时烧杯，今年已经有2年java开发经验。<br>学计算机的我每天12个小时抱着电脑，现在只是实习生。</p>
+<h2 id="入职一小时"><a href="#入职一小时" class="headerlink" title="入职一小时"></a>入职一小时</h2><p>等着分不清的某部门的师兄来装电脑，再看看书包里100公斤的小老婆–斯丢批德。<br>一群大男人对着新配的i7和高半头的屏幕羡慕恨，这种基本追求大概程序员是戒不掉了。</p>
+<h2 id="高师傅"><a href="#高师傅" class="headerlink" title="高师傅"></a>高师傅</h2><p>钟老板介绍的师傅姓高，听口音是老员工了。<br>静一静，静一静，你听师傅和你说啊：从前呢<br>先从业务流程讲，现在公司并行有两套系统，一套是第三方支付-泰易付-泰和网，一套是8.15要上线的银行-泰易付-泰然城，要被监管了，所以第三方支付要转向银行。<br>讲数据库</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[core-java-初始化]]></title>
       <url>http://yoursite.com/2016/07/25/core-java-%E5%88%9D%E5%A7%8B%E5%8C%96/</url>
       <content type="html"><![CDATA[<p>java尽力保证：所有变量在使用之前都能得到恰当的初始化。<br><a id="more"></a></p>
@@ -62,15 +72,12 @@ public class Test {
       <title><![CDATA[core-java内部类]]></title>
       <url>http://yoursite.com/2016/07/19/core-java%E5%86%85%E9%83%A8%E7%B1%BB/</url>
       <content type="html"><![CDATA[<p>人家都叫内部类那就是说她是定义在另一个类中的类咯。<br><a id="more"></a></p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>内部类又分为成员内部类、静态内部类、方法内部类和匿名内部类。</p>
-<blockquote>
-<p>使用内部类的主要原因：</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>内部类又分为成员内部类、静态内部类、方法内部类和匿名内部类。<br>使用内部类的主要原因：</p>
 <ol>
 <li>内部类方法可以访问该类定义所在的作用域中的数据，包括私有的数据</li>
 <li>内部类可以对同一个包的其他类隐藏起来</li>
 <li>想定义一个回调函数又不想编写大量代码，使用匿名内部类比较便捷</li>
 </ol>
-</blockquote>
 <h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><pre><code>class Outer {
     class Inner{
 
